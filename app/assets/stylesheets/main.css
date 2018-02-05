@@ -85,6 +85,9 @@ h1 {
 .tomato-navigation__title {
 	font-weight: bold;
 }
+.navbar-header{
+	width:100%;
+}
 
 /*************************************** 
  * Tomato Card 

@@ -24,6 +24,7 @@
         var vm = this;
         vm.title = "Big Tomato Sauce Co.";
         vm.logoUrl = "../app/assets/images/tomato-logo.png";
+        vm.announcements = "Announcement";
     }
  })();
  

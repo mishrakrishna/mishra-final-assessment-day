@@ -6,11 +6,14 @@ angular
         // route for the home page
         .when('/', {
             templateUrl : './tomato-dashboard/tomato-dashboard.html',
-            controller  : 'TomatoDashboardController'
+            controller  : 'TomatoDashboardController',
+            controlleras: 'vm'
         })
 
         // route for the about page
         .when('/Announcements', {
-            templateUrl : './app/shared-components/tomato-announcements-feed/tomato-announcements-feed.directive.html'
+            templateUrl : './app/tomato-announcements/tomato-announcements-home.html',
+            controller  : 'TomatoAnnouncementsHomeController',
+            controlleras: 'vm'
         });
     }]);

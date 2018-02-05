@@ -14,8 +14,8 @@
                 <tr>
                 </tr>
             </thead>
-            <tbody>
-                <tr dir-paginate="announcement in vm.UpdatedAnnouncementsData">
+            <tbody style="overflow-y:scroll">
+                <tr ng-repeat="announcement in vm.UpdatedAnnouncementsData track by $index">
                     <td>{{announcement.ID}}</td>
                     <td><span ng-class={{announcement.Type.Icon}}></span> {{announcement.Type.Title}}</td>
                     <td>{{announcement.Date | date: 'M/d/yyyy'}}</td>

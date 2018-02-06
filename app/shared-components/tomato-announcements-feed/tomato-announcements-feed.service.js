@@ -10,7 +10,7 @@
     function tomatoAnnouncementFeedService() {
         var service = {
             filterDataByFarm: filterDataByFarm,
-            getOwnerNamesUpdated : getOwnerNamesUpdated
+            populateOwnersInfo : populateOwnersInfo
         };
 
         return service; 
@@ -19,10 +19,11 @@
             return _.filter(data, function(data) {return data.farm.Title === filter;});
         }
 
-        function getOwnerNamesUpdated(mastersourcedata, childsourcedata) {
-           return _(mastersourcedata).map(function(item, itemId) {
+        function populateOwnersInfo(mastersourcedata, childsourcedata) {
+            _(mastersourcedata).map(function(item, itemId) {
                 item['Owner'] = _(childsourcedata).filter({ID: item.OwnerID}).value()[0].Title;
-                }).value(); 
+            }).value(); 
+            return mastersourcedata;
         }
     }
 })();

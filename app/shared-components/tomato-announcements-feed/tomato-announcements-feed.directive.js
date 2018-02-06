@@ -31,11 +31,11 @@
         activate();
 
         function activate() {
-            getOwnerNamesUpdated(vm.announcements, vm.announcementsOwners);
+            populateOwnersInfoInAnnouncements(vm.announcements, vm.announcementsOwners);
         }
 
-        function getOwnerNamesUpdated(announcements, announcementsOwners) {
-                vm.UpdatedAnnouncementsData = tomatoAnnouncementFeedService.getOwnerNamesUpdated(announcements, announcementsOwners);
+        function populateOwnersInfoInAnnouncements(announcements, announcementsOwners) {
+                vm.UpdatedAnnouncementsData = tomatoAnnouncementFeedService.populateOwnersInfo(announcements, announcementsOwners);
         }
 
     }

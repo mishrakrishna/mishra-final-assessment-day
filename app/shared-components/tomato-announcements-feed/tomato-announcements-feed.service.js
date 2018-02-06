@@ -10,7 +10,8 @@
     function tomatoAnnouncementFeedService() {
         var service = {
             filterDataByFarm: filterDataByFarm,
-            populateOwnersInfo : populateOwnersInfo
+            populateOwnersInfo : populateOwnersInfo,
+            getUniqueValuesOfProeprty : getUniqueValuesOfProeprty
         };
 
         return service; 
@@ -24,6 +25,10 @@
                 item['Owner'] = _(childsourcedata).filter({ID: item.OwnerID}).value()[0].Title;
             }).value(); 
             return mastersourcedata;
+        }
+
+        function getUniqueValuesOfProeprty(mastersourcedata, property){
+            return _.uniq(_(mastersourcedata).map(property).value());
         }
     }
 })();

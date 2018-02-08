@@ -10,13 +10,12 @@
 	function mockRestService($http, $q) {
 
 		var service = {
-			getListItems: getListItems,
-			getAllItems: getAllItems
+			getListItems: getListItems
 		};
 
 		return service;
 
-		function getListItems(listTitle, queryParams) {
+		/*function getListItems(listTitle, queryParams) {
             var dfd = $q.defer();
             $http.defaults.headers.post['X-HTTP-Method'] = "";
             var restUrl = "../_api/web/lists/getbytitle('" + listTitle + "')/items" + queryParams;
@@ -26,9 +25,9 @@
                 dfd.reject("error, cannot get items"); 
             });
             return dfd.promise;
-		}
+		}*/
 
-		function getAllItems(listTitle, params) {
+		function getListItems(listTitle, params) {
             var filters = [];
 			
 			//setting an int value to maximum no. of rows returned from query
@@ -78,7 +77,6 @@
                 })
             );
         }
-
 	}
 })();
 
@@ -110,8 +108,39 @@
 
 /*************** INSERT ANSWERS BELOW IN THE COMMENTED AREA**************
  
+		//used all internal names for queries.
+		vm.HighRiskAndIssues = [];
+		vm.listTitleRisksandIssues = "Risks and Issues";
+		vm.paramsHighRiskAndIssues = {
+			select: "ID,Title,Description,Modified,Function/Title, Item Owner/Title",
+			top: 500,
+			expand: "Function,Item Owner",
+			filter: "Risk Impact eq 'High '"
+		};
+		vm.WorkPlans = [];
+		vm.listTitleWorkPlans = "Work Plan";
+		vm.paramsWorkPlans = {
+			select: "ID,Task Owner/Title,Function/Title,Work Plan Task Type,Work Plan Task Status/Title,Due Date",
+			top: 2000,
+			orderby: "Due Date asc",
+			expand: "Task Owner,Function,Work Plan Task Status"
+		};
 
+		getRiskAndIssues(vm.listTitleRisksandIssues, vm.paramsHighRiskAndIssues),
+		
+		getWorkplans(vm.listTitleWorkPlans, vm.paramsWorkPlans),
 
+		function getRiskAndIssues(listTitleRisksandIssues, paramsHighRiskAndIssues) {
+			return mockRestService.getListItems(listTitleRisksandIssues, paramsHighRiskAndIssues).then(function(response) {
+				return response;
+			});
+		}
+
+		function getWorkplans(listTitleWorkPlans, paramsWorkPlans) {
+			return mockRestService.getListItems(listTitleWorkPlans, paramsWorkPlans).then(function(response) {
+				return response;
+			});
+		}
 
 
 
